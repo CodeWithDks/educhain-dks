@@ -96,6 +96,21 @@ function Index() {
           </a>
         </div>
 
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-muted-foreground">
+          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1">
+            Python 3.10+
+          </span>
+          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1">
+            MIT License
+          </span>
+          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1">
+            Tests passing
+          </span>
+          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1">
+            PyPI: educhain-dks
+          </span>
+        </div>
+
         <div className="mt-16 w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
           <div className="flex items-center gap-3 border-b border-border bg-secondary px-4 py-3">
             <div className="flex gap-1.5">
@@ -108,16 +123,20 @@ function Index() {
             </span>
           </div>
           <pre className="overflow-x-auto p-6 text-left text-sm leading-relaxed text-foreground font-mono">
-            <code>{`from educhain import Chain, Prompt
+            <code>{`from educhain.prompts import PromptTemplate
+from educhain.models import ChatModel
+from educhain.output_parsers import StringOutputParser
 
-# Build a simple LLM pipeline from scratch
-chain = Chain([
-    Prompt("Explain {topic} in one sentence."),
-    Prompt("Now translate that to French.")
-])
+prompt = PromptTemplate(
+    template="Explain {topic} in simple words.",
+    input_variables=["topic"]
+)
+model = ChatModel()
+parser = StringOutputParser()
 
-result = chain.run({"topic": "recursion"})
-print(result)`}</code>
+chain = prompt | model | parser
+response = chain.invoke({"topic": "Artificial Intelligence"})
+print(response)`}</code>
           </pre>
         </div>
       </main>
