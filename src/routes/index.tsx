@@ -39,15 +39,15 @@ function Index() {
           </span>
         </div>
         <div className="hidden items-center gap-6 text-sm font-medium text-muted-foreground sm:flex">
-          <a href="#docs" className="transition-colors hover:text-foreground">
+          <Link to="/docs" className="transition-colors hover:text-foreground">
             Docs
-          </a>
-          <a
-            href="#examples"
+          </Link>
+          <Link
+            to="/docs/examples"
             className="transition-colors hover:text-foreground"
           >
             Examples
-          </a>
+          </Link>
           <a
             href="https://github.com/CodeWithDks/EduChain"
             target="_blank"
