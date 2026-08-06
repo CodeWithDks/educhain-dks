@@ -117,12 +117,12 @@ function DocsLayout() {
             <Link to="/docs" className="hidden transition-colors hover:text-foreground sm:inline">
               Docs
             </Link>
-            <a
-              href="/docs/examples"
+            <Link
+              to="/docs/examples"
               className="hidden transition-colors hover:text-foreground sm:inline"
             >
               Examples
-            </a>
+            </Link>
             <a
               href="https://github.com/CodeWithDks/EduChain"
               target="_blank"
@@ -131,12 +131,12 @@ function DocsLayout() {
             >
               GitHub
             </a>
-            <a
-              href="/docs/installation"
+            <Link
+              to="/docs/installation"
               className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-emerald-glow"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       </header>
