@@ -57,9 +57,13 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
       {NAV.map((section) => (
         <div key={section.title}>
           {section.href ? (
-            <a href={section.href} onClick={onNavigate} className={linkClass(section.href)}>
+            <Link
+              to={section.href}
+              onClick={onNavigate}
+              className={linkClass(section.href)}
+            >
               {section.title}
-            </a>
+            </Link>
           ) : (
             <>
               <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">
@@ -67,14 +71,14 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               </p>
               <div className="flex flex-col gap-0.5 border-l border-border pl-2">
                 {section.links?.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
-                    href={link.href}
+                    to={link.href}
                     onClick={onNavigate}
                     className={linkClass(link.href)}
                   >
                     {link.title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </>
