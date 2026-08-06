@@ -39,15 +39,15 @@ function Index() {
           </span>
         </div>
         <div className="hidden items-center gap-6 text-sm font-medium text-muted-foreground sm:flex">
-          <a href="#docs" className="transition-colors hover:text-foreground">
+          <Link to="/docs" className="transition-colors hover:text-foreground">
             Docs
-          </a>
-          <a
-            href="#examples"
+          </Link>
+          <Link
+            to="/docs/examples"
             className="transition-colors hover:text-foreground"
           >
             Examples
-          </a>
+          </Link>
           <a
             href="https://github.com/CodeWithDks/EduChain"
             target="_blank"
@@ -79,7 +79,7 @@ function Index() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Link
-            to="/"
+            to="/docs"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-emerald/25 transition-all hover:bg-emerald-glow hover:shadow-emerald/40"
           >
             Get Started
