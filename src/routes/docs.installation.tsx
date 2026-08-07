@@ -107,6 +107,33 @@ function InstallationPage() {
           </li>
         </ol>
       </section>
+
+      <section className="mt-10">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+          Option 3: Docker (run the full test suite instantly)
+        </h2>
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+          Prefer not to set up Python locally? Pull the pre-built Docker image —
+          running it executes EduChain's full test suite automatically, so you
+          can verify everything works in seconds.
+        </p>
+        <CodeBlock code="docker pull deepaksingh09/educhain-app" />
+        <p className="mt-4 text-sm font-medium text-muted-foreground">
+          Create a <code>.env</code> file in your current directory first, with{" "}
+          <code>OPENAI_API_KEY=your_api_key_here</code>, then run:
+        </p>
+        <CodeBlock code="docker run --env-file .env deepaksingh09/educhain-app" />
+        <p className="mt-4 text-sm text-muted-foreground">
+          <a
+            href="https://hub.docker.com/r/deepaksingh09/educhain-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-primary underline underline-offset-4 transition-colors hover:text-emerald-glow"
+          >
+            View the image on Docker Hub
+          </a>
+        </p>
+      </section>
     </article>
   );
 }
