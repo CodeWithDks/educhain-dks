@@ -152,7 +152,7 @@ function DocsLayout() {
       </header>
 
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-10 px-4 py-10 lg:px-8">
-        <aside className="hidden w-60 shrink-0 lg:block">
+        <aside className={`${desktopOpen ? "lg:block" : "lg:hidden"} hidden w-60 shrink-0`}>
           <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
             <SidebarNav />
           </div>
