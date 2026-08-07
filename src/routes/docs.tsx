@@ -91,6 +91,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
 
 function DocsLayout() {
   const [open, setOpen] = useState(false);
+  const [desktopOpen, setDesktopOpen] = useState(true);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -99,11 +100,20 @@ function DocsLayout() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:text-foreground lg:hidden"
-              aria-label="Open documentation menu"
-              onClick={() => setOpen(true)}
+              className="inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:text-foreground"
+              aria-label={
+                open || desktopOpen ? "Close documentation menu" : "Open documentation menu"
+              }
+              aria-expanded={open || desktopOpen}
+              onClick={() => {
+                if (typeof window !== "undefined" && window.innerWidth < 1024) {
+                  setOpen((v) => !v);
+                } else {
+                  setDesktopOpen((v) => !v);
+                }
+              }}
             >
-              <Menu className="h-4 w-4" />
+              {open || desktopOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
             <Link to="/" className="flex items-center gap-2">
               <Terminal className="h-5 w-5 text-primary" />
@@ -142,7 +152,7 @@ function DocsLayout() {
       </header>
 
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-10 px-4 py-10 lg:px-8">
-        <aside className="hidden w-60 shrink-0 lg:block">
+        <aside className={`${desktopOpen ? "lg:block" : "lg:hidden"} hidden w-60 shrink-0`}>
           <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
             <SidebarNav />
           </div>
