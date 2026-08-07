@@ -31,8 +31,9 @@ function InstallationPage() {
         Installation
       </h1>
       <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-        Get EduChain running locally in minutes. Choose the PyPI package for the
-        latest stable release, or clone the repository to hack on the source.
+        Get EduChain running in minutes. Choose the PyPI package for the latest
+        stable release, clone the repository to hack on the source, or pull the
+        Docker image to run the full test suite instantly.
       </p>
 
       <section className="mt-10">
