@@ -89,7 +89,7 @@ print(answer)`}
         <p className="mt-6 text-base leading-relaxed text-muted-foreground">
           See{" "}
           <a
-            href="https://github.com/CodeWithDks/EduChain/blob/main/demo_agent.py"
+            href="https://github.com/CodeWithDks/EduChain/blob/main/tests/demo_agent.py"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-emerald-glow"
