@@ -9,14 +9,7 @@ export const Route = createFileRoute("/docs/installation")({
       {
         name: "description",
         content:
-          "Install EduChain via PyPI or clone the repository and set up a local development environment.",
-      },
-      { property: "og:title", content: "Installation — EduChain" },
-      {
-        property: "og:description",
-        content:
-          "Install EduChain via PyPI or clone the repository and set up a local development environment.",
-      },
+          "Install EduChain via PyPI, clone the repository, or run the full test suite with Docker.",
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
