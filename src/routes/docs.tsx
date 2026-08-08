@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Github, Menu, Terminal, X } from "lucide-react";
 
@@ -92,6 +92,16 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
 function DocsLayout() {
   const [open, setOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const menuOpen = isMobile ? open : desktopOpen;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
