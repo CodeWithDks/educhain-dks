@@ -1,5 +1,6 @@
-import { useState, type ReactNode } from "react";
-import { Check, Copy } from "lucide-react";
+import { type ReactNode } from "react";
+import { CopyButton } from "./CopyButton";
+import { cn } from "@/lib/utils";
 
 const KEYWORDS = [
   "from",
@@ -84,22 +85,15 @@ export function CodeBlock({
   code,
   filename = "educhain.py",
   language = "python",
+  hideHeader = false,
+  noBorder = false,
 }: {
   code: string;
-  filename?: string;
-  language?: string;
+  filename?: string | undefined;
+  language?: string | undefined;
+  hideHeader?: boolean | undefined;
+  noBorder?: boolean | undefined;
 }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
 
   const highlighted: ReactNode =
     language === "python" ? (
@@ -113,33 +107,25 @@ export function CodeBlock({
     );
 
   return (
-    <div className="group my-6 w-full overflow-hidden rounded-2xl border border-border bg-card">
-      <div className="flex items-center justify-between gap-3 border-b border-border bg-secondary px-4 py-3">
-        <div className="flex items-center gap-3">
-          <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+    <div
+      className={cn(
+        "group w-full overflow-hidden bg-card",
+        noBorder ? "" : "my-6 rounded-2xl border border-border",
+      )}
+    >
+      {!hideHeader && (
+        <div className="flex items-center justify-between gap-3 border-b border-border bg-secondary px-4 py-3">
+          <div className="flex items-center gap-3">
+            <div className="flex gap-1.5">
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">{filename}</span>
           </div>
-          <span className="font-mono text-xs text-muted-foreground">{filename}</span>
+          <CopyButton code={code} />
         </div>
-        <button
-          type="button"
-          onClick={handleCopy}
-          aria-label="Copy code to clipboard"
-          className="inline-flex items-center gap-1.5 rounded-md border border-border px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-        >
-          {copied ? (
-            <>
-              <Check className="h-3.5 w-3.5 text-primary" /> Copied
-            </>
-          ) : (
-            <>
-              <Copy className="h-3.5 w-3.5" /> Copy
-            </>
-          )}
-        </button>
-      </div>
+      )}
       <pre className="overflow-x-auto p-5 text-left font-mono text-sm leading-relaxed">
         <code>{highlighted}</code>
       </pre>

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as DocsIndexRouteImport } from './routes/docs.index'
+import { Route as DocsExamplesRouteImport } from './routes/docs.examples'
 import { Route as DocsInstallationRouteImport } from './routes/docs.installation'
 import { Route as DocsQuickstartRouteImport } from './routes/docs.quickstart'
 
@@ -30,6 +31,11 @@ const DocsIndexRoute = DocsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsExamplesRoute = DocsExamplesRouteImport.update({
+  id: '/examples',
+  path: '/examples',
+  getParentRoute: () => DocsRoute,
+} as any)
 const DocsInstallationRoute = DocsInstallationRouteImport.update({
   id: '/installation',
   path: '/installation',
@@ -44,12 +50,14 @@ const DocsQuickstartRoute = DocsQuickstartRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs/': typeof DocsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs': typeof DocsIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs/': typeof DocsIndexRoute
@@ -65,13 +74,20 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/docs' | '/docs/installation' | '/docs/quickstart' | '/docs/'
+    | '/'
+    | '/docs'
+    | '/docs/examples'
+    | '/docs/installation'
+    | '/docs/quickstart'
+    | '/docs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs/installation' | '/docs/quickstart' | '/docs'
+  to:
+    '/' | '/docs/examples' | '/docs/installation' | '/docs/quickstart' | '/docs'
   id:
     | '__root__'
     | '/'
     | '/docs'
+    | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
     | '/docs/'
@@ -105,6 +121,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsIndexRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/examples': {
+      id: '/docs/examples'
+      path: '/examples'
+      fullPath: '/docs/examples'
+      preLoaderRoute: typeof DocsExamplesRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/docs/installation': {
       id: '/docs/installation'
       path: '/installation'
@@ -123,12 +146,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface DocsRouteChildren {
+  DocsExamplesRoute: typeof DocsExamplesRoute
   DocsInstallationRoute: typeof DocsInstallationRoute
   DocsQuickstartRoute: typeof DocsQuickstartRoute
   DocsIndexRoute: typeof DocsIndexRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
+  DocsExamplesRoute: DocsExamplesRoute,
   DocsInstallationRoute: DocsInstallationRoute,
   DocsQuickstartRoute: DocsQuickstartRoute,
   DocsIndexRoute: DocsIndexRoute,
@@ -143,3 +168,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
