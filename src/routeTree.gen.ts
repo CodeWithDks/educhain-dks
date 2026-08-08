@@ -16,6 +16,17 @@ import { Route as DocsArchitectureRouteImport } from './routes/docs.architecture
 import { Route as DocsExamplesRouteImport } from './routes/docs.examples'
 import { Route as DocsInstallationRouteImport } from './routes/docs.installation'
 import { Route as DocsQuickstartRouteImport } from './routes/docs.quickstart'
+import { Route as DocsConceptsAgentRouteImport } from './routes/docs.concepts.agent'
+import { Route as DocsConceptsCallbackHandlerRouteImport } from './routes/docs.concepts.callback-handler'
+import { Route as DocsConceptsChatModelRouteImport } from './routes/docs.concepts.chat-model'
+import { Route as DocsConceptsOutputParserRouteImport } from './routes/docs.concepts.output-parser'
+import { Route as DocsConceptsPromptTemplateRouteImport } from './routes/docs.concepts.prompt-template'
+import { Route as DocsConceptsRagChainRouteImport } from './routes/docs.concepts.rag-chain'
+import { Route as DocsConceptsRunnableRouteImport } from './routes/docs.concepts.runnable'
+import { Route as DocsConceptsRunnableParallelRouteImport } from './routes/docs.concepts.runnable-parallel'
+import { Route as DocsConceptsRunnableSequenceRouteImport } from './routes/docs.concepts.runnable-sequence'
+import { Route as DocsConceptsToolRouteImport } from './routes/docs.concepts.tool'
+import { Route as DocsConceptsVectorStoreRouteImport } from './routes/docs.concepts.vector-store'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +63,66 @@ const DocsQuickstartRoute = DocsQuickstartRouteImport.update({
   path: '/quickstart',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsConceptsAgentRoute = DocsConceptsAgentRouteImport.update({
+  id: '/concepts/agent',
+  path: '/concepts/agent',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsConceptsCallbackHandlerRoute =
+  DocsConceptsCallbackHandlerRouteImport.update({
+    id: '/concepts/callback-handler',
+    path: '/concepts/callback-handler',
+    getParentRoute: () => DocsRoute,
+  } as any)
+const DocsConceptsChatModelRoute = DocsConceptsChatModelRouteImport.update({
+  id: '/concepts/chat-model',
+  path: '/concepts/chat-model',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsConceptsOutputParserRoute =
+  DocsConceptsOutputParserRouteImport.update({
+    id: '/concepts/output-parser',
+    path: '/concepts/output-parser',
+    getParentRoute: () => DocsRoute,
+  } as any)
+const DocsConceptsPromptTemplateRoute =
+  DocsConceptsPromptTemplateRouteImport.update({
+    id: '/concepts/prompt-template',
+    path: '/concepts/prompt-template',
+    getParentRoute: () => DocsRoute,
+  } as any)
+const DocsConceptsRagChainRoute = DocsConceptsRagChainRouteImport.update({
+  id: '/concepts/rag-chain',
+  path: '/concepts/rag-chain',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsConceptsRunnableRoute = DocsConceptsRunnableRouteImport.update({
+  id: '/concepts/runnable',
+  path: '/concepts/runnable',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsConceptsRunnableParallelRoute =
+  DocsConceptsRunnableParallelRouteImport.update({
+    id: '/concepts/runnable-parallel',
+    path: '/concepts/runnable-parallel',
+    getParentRoute: () => DocsRoute,
+  } as any)
+const DocsConceptsRunnableSequenceRoute =
+  DocsConceptsRunnableSequenceRouteImport.update({
+    id: '/concepts/runnable-sequence',
+    path: '/concepts/runnable-sequence',
+    getParentRoute: () => DocsRoute,
+  } as any)
+const DocsConceptsToolRoute = DocsConceptsToolRouteImport.update({
+  id: '/concepts/tool',
+  path: '/concepts/tool',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsConceptsVectorStoreRoute = DocsConceptsVectorStoreRouteImport.update({
+  id: '/concepts/vector-store',
+  path: '/concepts/vector-store',
+  getParentRoute: () => DocsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +132,17 @@ export interface FileRoutesByFullPath {
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs/': typeof DocsIndexRoute
+  '/docs/concepts/agent': typeof DocsConceptsAgentRoute
+  '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
+  '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
+  '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
+  '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
+  '/docs/concepts/runnable': typeof DocsConceptsRunnableRoute
+  '/docs/concepts/runnable-parallel': typeof DocsConceptsRunnableParallelRoute
+  '/docs/concepts/runnable-sequence': typeof DocsConceptsRunnableSequenceRoute
+  '/docs/concepts/tool': typeof DocsConceptsToolRoute
+  '/docs/concepts/vector-store': typeof DocsConceptsVectorStoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,6 +151,17 @@ export interface FileRoutesByTo {
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs': typeof DocsIndexRoute
+  '/docs/concepts/agent': typeof DocsConceptsAgentRoute
+  '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
+  '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
+  '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
+  '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
+  '/docs/concepts/runnable': typeof DocsConceptsRunnableRoute
+  '/docs/concepts/runnable-parallel': typeof DocsConceptsRunnableParallelRoute
+  '/docs/concepts/runnable-sequence': typeof DocsConceptsRunnableSequenceRoute
+  '/docs/concepts/tool': typeof DocsConceptsToolRoute
+  '/docs/concepts/vector-store': typeof DocsConceptsVectorStoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,6 +172,17 @@ export interface FileRoutesById {
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
   '/docs/': typeof DocsIndexRoute
+  '/docs/concepts/agent': typeof DocsConceptsAgentRoute
+  '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
+  '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
+  '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
+  '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
+  '/docs/concepts/runnable': typeof DocsConceptsRunnableRoute
+  '/docs/concepts/runnable-parallel': typeof DocsConceptsRunnableParallelRoute
+  '/docs/concepts/runnable-sequence': typeof DocsConceptsRunnableSequenceRoute
+  '/docs/concepts/tool': typeof DocsConceptsToolRoute
+  '/docs/concepts/vector-store': typeof DocsConceptsVectorStoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -90,6 +194,17 @@ export interface FileRouteTypes {
     | '/docs/installation'
     | '/docs/quickstart'
     | '/docs/'
+    | '/docs/concepts/agent'
+    | '/docs/concepts/callback-handler'
+    | '/docs/concepts/chat-model'
+    | '/docs/concepts/output-parser'
+    | '/docs/concepts/prompt-template'
+    | '/docs/concepts/rag-chain'
+    | '/docs/concepts/runnable'
+    | '/docs/concepts/runnable-parallel'
+    | '/docs/concepts/runnable-sequence'
+    | '/docs/concepts/tool'
+    | '/docs/concepts/vector-store'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -98,6 +213,17 @@ export interface FileRouteTypes {
     | '/docs/installation'
     | '/docs/quickstart'
     | '/docs'
+    | '/docs/concepts/agent'
+    | '/docs/concepts/callback-handler'
+    | '/docs/concepts/chat-model'
+    | '/docs/concepts/output-parser'
+    | '/docs/concepts/prompt-template'
+    | '/docs/concepts/rag-chain'
+    | '/docs/concepts/runnable'
+    | '/docs/concepts/runnable-parallel'
+    | '/docs/concepts/runnable-sequence'
+    | '/docs/concepts/tool'
+    | '/docs/concepts/vector-store'
   id:
     | '__root__'
     | '/'
@@ -107,6 +233,17 @@ export interface FileRouteTypes {
     | '/docs/installation'
     | '/docs/quickstart'
     | '/docs/'
+    | '/docs/concepts/agent'
+    | '/docs/concepts/callback-handler'
+    | '/docs/concepts/chat-model'
+    | '/docs/concepts/output-parser'
+    | '/docs/concepts/prompt-template'
+    | '/docs/concepts/rag-chain'
+    | '/docs/concepts/runnable'
+    | '/docs/concepts/runnable-parallel'
+    | '/docs/concepts/runnable-sequence'
+    | '/docs/concepts/tool'
+    | '/docs/concepts/vector-store'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -165,6 +302,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsQuickstartRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/concepts/agent': {
+      id: '/docs/concepts/agent'
+      path: '/concepts/agent'
+      fullPath: '/docs/concepts/agent'
+      preLoaderRoute: typeof DocsConceptsAgentRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/callback-handler': {
+      id: '/docs/concepts/callback-handler'
+      path: '/concepts/callback-handler'
+      fullPath: '/docs/concepts/callback-handler'
+      preLoaderRoute: typeof DocsConceptsCallbackHandlerRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/chat-model': {
+      id: '/docs/concepts/chat-model'
+      path: '/concepts/chat-model'
+      fullPath: '/docs/concepts/chat-model'
+      preLoaderRoute: typeof DocsConceptsChatModelRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/output-parser': {
+      id: '/docs/concepts/output-parser'
+      path: '/concepts/output-parser'
+      fullPath: '/docs/concepts/output-parser'
+      preLoaderRoute: typeof DocsConceptsOutputParserRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/prompt-template': {
+      id: '/docs/concepts/prompt-template'
+      path: '/concepts/prompt-template'
+      fullPath: '/docs/concepts/prompt-template'
+      preLoaderRoute: typeof DocsConceptsPromptTemplateRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/rag-chain': {
+      id: '/docs/concepts/rag-chain'
+      path: '/concepts/rag-chain'
+      fullPath: '/docs/concepts/rag-chain'
+      preLoaderRoute: typeof DocsConceptsRagChainRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/runnable': {
+      id: '/docs/concepts/runnable'
+      path: '/concepts/runnable'
+      fullPath: '/docs/concepts/runnable'
+      preLoaderRoute: typeof DocsConceptsRunnableRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/runnable-parallel': {
+      id: '/docs/concepts/runnable-parallel'
+      path: '/concepts/runnable-parallel'
+      fullPath: '/docs/concepts/runnable-parallel'
+      preLoaderRoute: typeof DocsConceptsRunnableParallelRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/runnable-sequence': {
+      id: '/docs/concepts/runnable-sequence'
+      path: '/concepts/runnable-sequence'
+      fullPath: '/docs/concepts/runnable-sequence'
+      preLoaderRoute: typeof DocsConceptsRunnableSequenceRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/tool': {
+      id: '/docs/concepts/tool'
+      path: '/concepts/tool'
+      fullPath: '/docs/concepts/tool'
+      preLoaderRoute: typeof DocsConceptsToolRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/concepts/vector-store': {
+      id: '/docs/concepts/vector-store'
+      path: '/concepts/vector-store'
+      fullPath: '/docs/concepts/vector-store'
+      preLoaderRoute: typeof DocsConceptsVectorStoreRouteImport
+      parentRoute: typeof DocsRoute
+    }
   }
 }
 
@@ -174,6 +388,17 @@ interface DocsRouteChildren {
   DocsInstallationRoute: typeof DocsInstallationRoute
   DocsQuickstartRoute: typeof DocsQuickstartRoute
   DocsIndexRoute: typeof DocsIndexRoute
+  DocsConceptsAgentRoute: typeof DocsConceptsAgentRoute
+  DocsConceptsCallbackHandlerRoute: typeof DocsConceptsCallbackHandlerRoute
+  DocsConceptsChatModelRoute: typeof DocsConceptsChatModelRoute
+  DocsConceptsOutputParserRoute: typeof DocsConceptsOutputParserRoute
+  DocsConceptsPromptTemplateRoute: typeof DocsConceptsPromptTemplateRoute
+  DocsConceptsRagChainRoute: typeof DocsConceptsRagChainRoute
+  DocsConceptsRunnableRoute: typeof DocsConceptsRunnableRoute
+  DocsConceptsRunnableParallelRoute: typeof DocsConceptsRunnableParallelRoute
+  DocsConceptsRunnableSequenceRoute: typeof DocsConceptsRunnableSequenceRoute
+  DocsConceptsToolRoute: typeof DocsConceptsToolRoute
+  DocsConceptsVectorStoreRoute: typeof DocsConceptsVectorStoreRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
@@ -182,6 +407,17 @@ const DocsRouteChildren: DocsRouteChildren = {
   DocsInstallationRoute: DocsInstallationRoute,
   DocsQuickstartRoute: DocsQuickstartRoute,
   DocsIndexRoute: DocsIndexRoute,
+  DocsConceptsAgentRoute: DocsConceptsAgentRoute,
+  DocsConceptsCallbackHandlerRoute: DocsConceptsCallbackHandlerRoute,
+  DocsConceptsChatModelRoute: DocsConceptsChatModelRoute,
+  DocsConceptsOutputParserRoute: DocsConceptsOutputParserRoute,
+  DocsConceptsPromptTemplateRoute: DocsConceptsPromptTemplateRoute,
+  DocsConceptsRagChainRoute: DocsConceptsRagChainRoute,
+  DocsConceptsRunnableRoute: DocsConceptsRunnableRoute,
+  DocsConceptsRunnableParallelRoute: DocsConceptsRunnableParallelRoute,
+  DocsConceptsRunnableSequenceRoute: DocsConceptsRunnableSequenceRoute,
+  DocsConceptsToolRoute: DocsConceptsToolRoute,
+  DocsConceptsVectorStoreRoute: DocsConceptsVectorStoreRoute,
 }
 
 const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
