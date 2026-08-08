@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Github, Terminal } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Github, Menu, Terminal, X } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -29,9 +30,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
-      <nav className="flex items-center justify-between px-6 py-5 lg:px-12">
+      <nav className="relative flex items-center justify-between px-6 py-5 lg:px-12">
         <div className="flex items-center gap-2">
           <Terminal className="h-6 w-6 text-primary" />
           <span className="text-lg font-semibold tracking-tight text-foreground">
@@ -57,7 +60,50 @@ function Index() {
             GitHub
           </a>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-menu"
+          className="inline-flex items-center justify-center rounded-md border border-border bg-secondary p-2 text-foreground transition-colors hover:bg-accent sm:hidden"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+
+        {menuOpen && (
+          <div
+            id="mobile-nav-menu"
+            className="absolute left-6 right-6 top-full z-50 flex flex-col overflow-hidden rounded-xl border border-border bg-card text-sm font-medium text-muted-foreground shadow-lg sm:hidden"
+          >
+            <Link
+              to="/docs"
+              onClick={() => setMenuOpen(false)}
+              className="px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
+            >
+              Docs
+            </Link>
+            <Link
+              to="/docs/examples"
+              onClick={() => setMenuOpen(false)}
+              className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
+            >
+              Examples
+            </Link>
+            <a
+              href="https://github.com/CodeWithDks/EduChain"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
+            >
+              GitHub
+            </a>
+          </div>
+        )}
       </nav>
+
 
       <main className="flex flex-1 flex-col items-center justify-center px-6 pb-20 pt-12 text-center lg:px-12">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-emerald-subtle px-3 py-1 text-sm font-medium text-primary">
