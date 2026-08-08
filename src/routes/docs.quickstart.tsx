@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CodeBlock } from "@/components/CodeBlock";
 import { ProviderCodeTabs } from "@/components/ProviderCodeTabs";
 
 export const Route = createFileRoute("/docs/quickstart")({
