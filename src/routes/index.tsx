@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Github, Menu, Terminal, X } from "lucide-react";
+import {
+  ArrowRight,
+  Github,
+  Menu,
+  Terminal,
+  X,
+  Star,
+  BookOpen,
+} from "lucide-react";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -104,8 +113,7 @@ function Index() {
         )}
       </nav>
 
-
-      <main className="flex flex-1 flex-col items-center justify-center px-6 pb-20 pt-12 text-center lg:px-12">
+      <main className="flex flex-1 flex-col items-center px-6 pb-12 pt-12 text-center lg:px-12">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-emerald-subtle px-3 py-1 text-sm font-medium text-primary">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
@@ -185,7 +193,48 @@ response = chain.invoke({"topic": "Artificial Intelligence"})
 print(response)`}</code>
           </pre>
         </div>
+
+        <section className="mt-20 w-full max-w-3xl">
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <span>Built by Deepak Kumar Singh</span>
+            <a
+              href="https://github.com/CodeWithDks"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Deepak Kumar Singh on GitHub"
+              className="inline-flex items-center transition-colors hover:text-foreground"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Ready to see how it works under the hood?
+            </h2>
+            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                to="/docs"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-emerald/25 transition-all hover:bg-emerald-glow hover:shadow-emerald/40"
+              >
+                <BookOpen className="h-4 w-4" />
+                Read the Docs
+              </Link>
+              <a
+                href="https://github.com/CodeWithDks/EduChain"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-secondary px-7 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                <Star className="h-4 w-4" />
+                Star on GitHub
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }
