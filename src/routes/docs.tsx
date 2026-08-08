@@ -174,12 +174,12 @@ function DocsLayout() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-40 lg:hidden">
           <div
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-card p-5">
+          <div className="absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-card pt-20 p-5">
             <div className="mb-6 flex items-center justify-between">
               <span className="text-sm font-semibold text-foreground">Documentation</span>
               <button
