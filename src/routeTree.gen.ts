@@ -16,6 +16,7 @@ import { Route as DocsArchitectureRouteImport } from './routes/docs.architecture
 import { Route as DocsExamplesRouteImport } from './routes/docs.examples'
 import { Route as DocsInstallationRouteImport } from './routes/docs.installation'
 import { Route as DocsQuickstartRouteImport } from './routes/docs.quickstart'
+import { Route as DocsRoadmapRouteImport } from './routes/docs.roadmap'
 import { Route as DocsConceptsAgentRouteImport } from './routes/docs.concepts.agent'
 import { Route as DocsConceptsCallbackHandlerRouteImport } from './routes/docs.concepts.callback-handler'
 import { Route as DocsConceptsChatModelRouteImport } from './routes/docs.concepts.chat-model'
@@ -61,6 +62,11 @@ const DocsInstallationRoute = DocsInstallationRouteImport.update({
 const DocsQuickstartRoute = DocsQuickstartRouteImport.update({
   id: '/quickstart',
   path: '/quickstart',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsRoadmapRoute = DocsRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
   getParentRoute: () => DocsRoute,
 } as any)
 const DocsConceptsAgentRoute = DocsConceptsAgentRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
+  '/docs/roadmap': typeof DocsRoadmapRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
+  '/docs/roadmap': typeof DocsRoadmapRoute
   '/docs': typeof DocsIndexRoute
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
+  '/docs/roadmap': typeof DocsRoadmapRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
+    | '/docs/roadmap'
     | '/docs/'
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
+    | '/docs/roadmap'
     | '/docs'
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
+    | '/docs/roadmap'
     | '/docs/'
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
@@ -300,6 +312,13 @@ declare module '@tanstack/react-router' {
       path: '/quickstart'
       fullPath: '/docs/quickstart'
       preLoaderRoute: typeof DocsQuickstartRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/roadmap': {
+      id: '/docs/roadmap'
+      path: '/roadmap'
+      fullPath: '/docs/roadmap'
+      preLoaderRoute: typeof DocsRoadmapRouteImport
       parentRoute: typeof DocsRoute
     }
     '/docs/concepts/agent': {
@@ -387,6 +406,7 @@ interface DocsRouteChildren {
   DocsExamplesRoute: typeof DocsExamplesRoute
   DocsInstallationRoute: typeof DocsInstallationRoute
   DocsQuickstartRoute: typeof DocsQuickstartRoute
+  DocsRoadmapRoute: typeof DocsRoadmapRoute
   DocsIndexRoute: typeof DocsIndexRoute
   DocsConceptsAgentRoute: typeof DocsConceptsAgentRoute
   DocsConceptsCallbackHandlerRoute: typeof DocsConceptsCallbackHandlerRoute
@@ -406,6 +426,7 @@ const DocsRouteChildren: DocsRouteChildren = {
   DocsExamplesRoute: DocsExamplesRoute,
   DocsInstallationRoute: DocsInstallationRoute,
   DocsQuickstartRoute: DocsQuickstartRoute,
+  DocsRoadmapRoute: DocsRoadmapRoute,
   DocsIndexRoute: DocsIndexRoute,
   DocsConceptsAgentRoute: DocsConceptsAgentRoute,
   DocsConceptsCallbackHandlerRoute: DocsConceptsCallbackHandlerRoute,
