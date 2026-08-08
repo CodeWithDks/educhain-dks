@@ -67,7 +67,7 @@ function Index() {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-menu"
-          className="inline-flex items-center justify-center rounded-md border border-border bg-secondary p-2 text-foreground transition-colors hover:bg-accent sm:hidden"
+          className="inline-flex items-center justify-center rounded-md border border-border bg-secondary p-3 text-foreground transition-colors hover:bg-accent sm:hidden min-h-11 min-w-11"
         >
           {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

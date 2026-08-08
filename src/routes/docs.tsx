@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Github, Menu, Terminal, X } from "lucide-react";
 
@@ -92,19 +92,29 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
 function DocsLayout() {
   const [open, setOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const menuOpen = isMobile ? open : desktopOpen;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center justify-center rounded-md border border-border p-3 text-muted-foreground transition-colors hover:text-foreground min-h-11 min-w-11"
               aria-label={
-                open || desktopOpen ? "Close documentation menu" : "Open documentation menu"
+                menuOpen ? "Close documentation menu" : "Open documentation menu"
               }
-              aria-expanded={open || desktopOpen}
+              aria-expanded={menuOpen}
               onClick={() => {
                 if (typeof window !== "undefined" && window.innerWidth < 1024) {
                   setOpen((v) => !v);
@@ -113,7 +123,7 @@ function DocsLayout() {
                 }
               }}
             >
-              {open || desktopOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
             <Link to="/" className="flex items-center gap-2">
               <Terminal className="h-5 w-5 text-primary" />
@@ -164,12 +174,12 @@ function DocsLayout() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-40 lg:hidden">
           <div
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-card p-5">
+          <div className="absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-card pt-20 p-5">
             <div className="mb-6 flex items-center justify-between">
               <span className="text-sm font-semibold text-foreground">Documentation</span>
               <button
