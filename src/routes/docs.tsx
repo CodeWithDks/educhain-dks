@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Github, Menu, Terminal, X } from "lucide-react";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/docs")({
   component: DocsLayout,
