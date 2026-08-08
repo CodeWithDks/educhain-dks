@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as DocsIndexRouteImport } from './routes/docs.index'
+import { Route as DocsArchitectureRouteImport } from './routes/docs.architecture'
 import { Route as DocsExamplesRouteImport } from './routes/docs.examples'
 import { Route as DocsInstallationRouteImport } from './routes/docs.installation'
 import { Route as DocsQuickstartRouteImport } from './routes/docs.quickstart'
@@ -29,6 +30,11 @@ const DocsRoute = DocsRouteImport.update({
 const DocsIndexRoute = DocsIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsArchitectureRoute = DocsArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
   getParentRoute: () => DocsRoute,
 } as any)
 const DocsExamplesRoute = DocsExamplesRouteImport.update({
@@ -50,6 +56,7 @@ const DocsQuickstartRoute = DocsQuickstartRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/docs/architecture': typeof DocsArchitectureRoute
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/docs/architecture': typeof DocsArchitectureRoute
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
@@ -66,6 +74,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/docs/architecture': typeof DocsArchitectureRoute
   '/docs/examples': typeof DocsExamplesRoute
   '/docs/installation': typeof DocsInstallationRoute
   '/docs/quickstart': typeof DocsQuickstartRoute
@@ -76,17 +85,24 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/docs'
+    | '/docs/architecture'
     | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
     | '/docs/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/docs/examples' | '/docs/installation' | '/docs/quickstart' | '/docs'
+    | '/'
+    | '/docs/architecture'
+    | '/docs/examples'
+    | '/docs/installation'
+    | '/docs/quickstart'
+    | '/docs'
   id:
     | '__root__'
     | '/'
     | '/docs'
+    | '/docs/architecture'
     | '/docs/examples'
     | '/docs/installation'
     | '/docs/quickstart'
@@ -121,6 +137,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsIndexRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/architecture': {
+      id: '/docs/architecture'
+      path: '/architecture'
+      fullPath: '/docs/architecture'
+      preLoaderRoute: typeof DocsArchitectureRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/docs/examples': {
       id: '/docs/examples'
       path: '/examples'
@@ -146,6 +169,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DocsRouteChildren {
+  DocsArchitectureRoute: typeof DocsArchitectureRoute
   DocsExamplesRoute: typeof DocsExamplesRoute
   DocsInstallationRoute: typeof DocsInstallationRoute
   DocsQuickstartRoute: typeof DocsQuickstartRoute
@@ -153,6 +177,7 @@ interface DocsRouteChildren {
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
+  DocsArchitectureRoute: DocsArchitectureRoute,
   DocsExamplesRoute: DocsExamplesRoute,
   DocsInstallationRoute: DocsInstallationRoute,
   DocsQuickstartRoute: DocsQuickstartRoute,
@@ -168,13 +193,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
