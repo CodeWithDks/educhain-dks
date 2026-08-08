@@ -91,7 +91,7 @@ function RoadmapPage() {
       <p className="mt-12 text-base leading-relaxed text-muted-foreground">
         See{" "}
         <a
-          href="https://github.com/CodeWithDks/EduChain/blob/main/ROADMAP.md"
+          href="https://github.com/CodeWithDks/EduChain/blob/main/educhain/ROADMAP.md"
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-emerald-glow"
