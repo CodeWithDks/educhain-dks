@@ -197,37 +197,7 @@ function DocsLayout() {
         </div>
       )}
 
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-muted-foreground sm:flex-row lg:px-8">
-          <p>MIT License</p>
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            <a
-              href="https://github.com/CodeWithDks/EduChain"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-            >
-              <Github className="h-4 w-4" /> GitHub
-            </a>
-            <a
-              href="https://pypi.org/project/educhain-dks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-foreground"
-            >
-              PyPI
-            </a>
-            <a
-              href="https://github.com/CodeWithDks"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-foreground"
-            >
-              Built by Deepak Kumar Singh
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
