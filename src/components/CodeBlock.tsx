@@ -89,10 +89,10 @@ export function CodeBlock({
   noBorder = false,
 }: {
   code: string;
-  filename?: string;
-  language?: string;
-  hideHeader?: boolean;
-  noBorder?: boolean;
+  filename?: string | undefined;
+  language?: string | undefined;
+  hideHeader?: boolean | undefined;
+  noBorder?: boolean | undefined;
 }) {
 
   const highlighted: ReactNode =
