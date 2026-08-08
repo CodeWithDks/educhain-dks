@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Github, Terminal } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Github, Menu, Terminal, X } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
