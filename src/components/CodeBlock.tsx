@@ -1,5 +1,6 @@
-import { useState, type ReactNode } from "react";
-import { Check, Copy } from "lucide-react";
+import { type ReactNode } from "react";
+import { CopyButton } from "./CopyButton";
+import { cn } from "@/lib/utils";
 
 const KEYWORDS = [
   "from",
