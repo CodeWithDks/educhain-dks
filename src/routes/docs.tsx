@@ -110,11 +110,11 @@ function DocsLayout() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center justify-center rounded-md border border-border p-3 text-muted-foreground transition-colors hover:text-foreground min-h-11 min-w-11"
               aria-label={
-                open || desktopOpen ? "Close documentation menu" : "Open documentation menu"
+                menuOpen ? "Close documentation menu" : "Open documentation menu"
               }
-              aria-expanded={open || desktopOpen}
+              aria-expanded={menuOpen}
               onClick={() => {
                 if (typeof window !== "undefined" && window.innerWidth < 1024) {
                   setOpen((v) => !v);
@@ -123,7 +123,7 @@ function DocsLayout() {
                 }
               }}
             >
-              {open || desktopOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
             <Link to="/" className="flex items-center gap-2">
               <Terminal className="h-5 w-5 text-primary" />
