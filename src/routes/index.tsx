@@ -1,15 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import {
-  ArrowRight,
-  Github,
-  Menu,
-  Terminal,
-  X,
-  Star,
-  BookOpen,
-} from "lucide-react";
+import { ArrowRight, Github, Star, BookOpen } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -39,81 +32,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
-      <nav className="relative flex items-center justify-between px-6 py-5 lg:px-12">
-        <div className="flex items-center gap-2">
-          <Terminal className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold tracking-tight text-foreground">
-            EduChain
-          </span>
-        </div>
-        <div className="hidden items-center gap-6 text-sm font-medium text-muted-foreground sm:flex">
-          <Link to="/docs" className="transition-colors hover:text-foreground">
-            Docs
-          </Link>
-          <Link
-            to="/docs/examples"
-            className="transition-colors hover:text-foreground"
-          >
-            Examples
-          </Link>
-          <a
-            href="https://github.com/CodeWithDks/EduChain"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-foreground"
-          >
-            GitHub
-          </a>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-menu"
-          className="inline-flex items-center justify-center rounded-md border border-border bg-secondary p-3 text-foreground transition-colors hover:bg-accent sm:hidden min-h-11 min-w-11"
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-
-        {menuOpen && (
-          <div
-            id="mobile-nav-menu"
-            className="absolute left-6 right-6 top-full z-50 flex flex-col overflow-hidden rounded-xl border border-border bg-card text-sm font-medium text-muted-foreground shadow-lg sm:hidden"
-          >
-            <Link
-              to="/docs"
-              onClick={() => setMenuOpen(false)}
-              className="px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
-            >
-              Docs
-            </Link>
-            <Link
-              to="/docs/examples"
-              onClick={() => setMenuOpen(false)}
-              className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
-            >
-              Examples
-            </Link>
-            <a
-              href="https://github.com/CodeWithDks/EduChain"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
-            >
-              GitHub
-            </a>
-          </div>
-        )}
-      </nav>
+      <SiteNavbar />
 
       <main className="flex flex-1 flex-col items-center px-6 pb-12 pt-12 text-center lg:px-12">
+
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-emerald-subtle px-3 py-1 text-sm font-medium text-primary">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
