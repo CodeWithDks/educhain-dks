@@ -1,15 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import {
-  ArrowRight,
-  Github,
-  Menu,
-  Terminal,
-  X,
-  Star,
-  BookOpen,
-} from "lucide-react";
+import { ArrowRight, Github, Star, BookOpen } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
