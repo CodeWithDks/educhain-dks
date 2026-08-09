@@ -17,6 +17,7 @@ function RunnableSequencePage() {
       title="Runnable Sequence"
       body="Executes multiple runnables sequentially via the | operator, with auto-flattening, and smart streaming support that correctly detects which step is the actual streaming source vs. a downstream transformer."
       why="Lets you build a chain by piping components together instead of manually calling each one and passing results by hand."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/sequence.py"
       related={[
         { title: "Runnable", href: "/docs/concepts/runnable" },
         { title: "Runnable Parallel", href: "/docs/concepts/runnable-parallel" },

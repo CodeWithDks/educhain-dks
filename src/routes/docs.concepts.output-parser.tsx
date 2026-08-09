@@ -17,6 +17,7 @@ function OutputParserPage() {
       title="Output Parser"
       body="Transforms raw model outputs into clean Python objects — StringOutputParser and JsonOutputParser."
       why="LLM responses come back as message objects; parsers extract just the usable content (a string, or parsed JSON) so downstream code doesn't have to handle raw model output."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/output_parsers/parser.py"
       related={[
         { title: "Runnable", href: "/docs/concepts/runnable" },
         { title: "Chat Model", href: "/docs/concepts/chat-model" },

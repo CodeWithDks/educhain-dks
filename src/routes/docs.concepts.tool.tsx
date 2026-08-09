@@ -17,6 +17,7 @@ function ToolPage() {
       title="Tool"
       body="Wraps a plain Python function as something an LLM can call — auto-generates the JSON schema from type hints and docstrings, no hand-written schema required."
       why="LLMs need a structured schema to know what a function expects; Tool generates that automatically from your existing function signature so you don't write it by hand."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/tool.py"
       related={[
         { title: "Chat Model", href: "/docs/concepts/chat-model" },
         { title: "Agent", href: "/docs/concepts/agent" },

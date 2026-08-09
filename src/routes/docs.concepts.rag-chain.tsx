@@ -17,6 +17,7 @@ function RagChainPage() {
       title="RAG Chain"
       body="Combines a vector store with an existing chain — retrieves relevant context, injects it into the prompt, generates a grounded answer."
       why="Lets a chain answer questions using information it wasn't trained on, by retrieving relevant text first and feeding it into the prompt before generation."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/rag.py"
       related={[
         { title: "Vector Store", href: "/docs/concepts/vector-store" },
         { title: "Runnable Sequence", href: "/docs/concepts/runnable-sequence" },

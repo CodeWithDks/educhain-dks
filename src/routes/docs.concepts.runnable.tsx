@@ -16,6 +16,7 @@ function RunnablePage() {
       title="Runnable"
       body="The base abstraction of EduChain. Every component inherits from Runnable and implements invoke(), with optional stream() and ainvoke() overrides."
       why="A consistent base interface is what lets every component — regardless of what it does internally — compose predictably into pipelines with the | operator."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/runnable.py"
       related={[
         { title: "Runnable Sequence", href: "/docs/concepts/runnable-sequence" },
         { title: "Runnable Parallel", href: "/docs/concepts/runnable-parallel" },

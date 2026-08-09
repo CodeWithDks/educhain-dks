@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { Github } from "lucide-react";
 
 export type RelatedLink = { title: string; href: string };
 
@@ -17,17 +18,20 @@ export function conceptHead(title: string, description: string) {
   };
 }
 
+
 export function ConceptPage({
   title,
   body,
   why,
   related,
+  sourceHref,
   children,
 }: {
   title: string;
   body: string;
   why: string;
   related: RelatedLink[];
+  sourceHref?: string;
   children?: ReactNode;
 }) {
   return (
@@ -49,7 +53,20 @@ export function ConceptPage({
         </p>
       </section>
 
+      {sourceHref ? (
+        <a
+          href={sourceHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        >
+          <Github className="h-4 w-4" />
+          View source on GitHub
+        </a>
+      ) : null}
+
       {children ? <section className="mt-10">{children}</section> : null}
+
 
       <section className="mt-12 border-t border-border pt-6">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/70">

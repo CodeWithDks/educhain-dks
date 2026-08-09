@@ -17,6 +17,7 @@ function AgentPage() {
       title="Agent"
       body="Wraps a tool-bound ChatModel in a reasoning loop — decides which tool to call, executes it, feeds the result back, and repeats until it reaches a final answer (bounded by max_iterations as a safety limit)."
       why="Some questions need multiple steps — call a tool, read the result, decide what to do next — rather than a single prompt-to-answer call."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/agent.py"
       related={[
         { title: "Tool", href: "/docs/concepts/tool" },
         { title: "Chat Model", href: "/docs/concepts/chat-model" },
