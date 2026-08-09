@@ -16,6 +16,7 @@ function RunnableParallelPage() {
       title="Runnable Parallel"
       body="Executes multiple independent chains — concurrently via threads (invoke) or asyncio.gather (ainvoke)."
       why="Some pipelines have independent branches that don't depend on each other's output — running them in parallel instead of sequentially saves real wall-clock time."
+      sourceHref="https://github.com/CodeWithDks/EduChain/blob/main/educhain/core/parallel.py"
       related={[
         { title: "Runnable Sequence", href: "/docs/concepts/runnable-sequence" },
         { title: "Runnable", href: "/docs/concepts/runnable" },
