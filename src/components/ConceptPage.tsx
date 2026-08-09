@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { Github } from "lucide-react";
 
 export type RelatedLink = { title: string; href: string };
 
@@ -16,6 +17,7 @@ export function conceptHead(title: string, description: string) {
     ],
   };
 }
+
 
 export function ConceptPage({
   title,
