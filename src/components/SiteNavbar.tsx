@@ -24,12 +24,6 @@ export function SiteNavbar() {
         >
           Examples
         </Link>
-        <Link
-          to="/features"
-          className="transition-colors hover:text-foreground"
-        >
-          Features
-        </Link>
         <a
           href="https://github.com/CodeWithDks/EduChain"
           target="_blank"
@@ -70,13 +64,6 @@ export function SiteNavbar() {
           >
             Examples
           </Link>
-          <Link
-            to="/features"
-            onClick={() => setMenuOpen(false)}
-            className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
-          >
-            Features
-          </Link>
           <a
             href="https://github.com/CodeWithDks/EduChain"
             target="_blank"
@@ -91,3 +78,4 @@ export function SiteNavbar() {
     </nav>
   );
 }
+
