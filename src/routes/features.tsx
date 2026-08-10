@@ -68,13 +68,13 @@ const featureCards = [
     icon: MessageSquareText,
     title: "Memory",
     description: "Chat History / Memory Module for managing conversation context.",
-    href: "/docs/concepts/chat-model",
+    href: "/docs/concepts/memory",
   },
   {
     icon: Zap,
     title: "Execution Models",
     description: "Streaming, Async Execution, and the Callback System.",
-    href: "/docs/concepts/callback-handler",
+    href: "/docs/concepts/execution-models",
   },
   {
     icon: Bot,

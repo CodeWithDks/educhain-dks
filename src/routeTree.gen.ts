@@ -21,6 +21,7 @@ import { Route as DocsRoadmapRouteImport } from './routes/docs.roadmap'
 import { Route as DocsConceptsAgentRouteImport } from './routes/docs.concepts.agent'
 import { Route as DocsConceptsCallbackHandlerRouteImport } from './routes/docs.concepts.callback-handler'
 import { Route as DocsConceptsChatModelRouteImport } from './routes/docs.concepts.chat-model'
+import { Route as DocsConceptsExecutionModelsRouteImport } from './routes/docs.concepts.execution-models'
 import { Route as DocsConceptsMemoryRouteImport } from './routes/docs.concepts.memory'
 import { Route as DocsConceptsOutputParserRouteImport } from './routes/docs.concepts.output-parser'
 import { Route as DocsConceptsPromptTemplateRouteImport } from './routes/docs.concepts.prompt-template'
@@ -92,6 +93,12 @@ const DocsConceptsChatModelRoute = DocsConceptsChatModelRouteImport.update({
   path: '/concepts/chat-model',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsConceptsExecutionModelsRoute =
+  DocsConceptsExecutionModelsRouteImport.update({
+    id: '/concepts/execution-models',
+    path: '/concepts/execution-models',
+    getParentRoute: () => DocsRoute,
+  } as any)
 const DocsConceptsMemoryRoute = DocsConceptsMemoryRouteImport.update({
   id: '/concepts/memory',
   path: '/concepts/memory',
@@ -155,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/execution-models': typeof DocsConceptsExecutionModelsRoute
   '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
@@ -177,6 +185,7 @@ export interface FileRoutesByTo {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/execution-models': typeof DocsConceptsExecutionModelsRoute
   '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
@@ -201,6 +210,7 @@ export interface FileRoutesById {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/execution-models': typeof DocsConceptsExecutionModelsRoute
   '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/execution-models'
     | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/execution-models'
     | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
@@ -271,6 +283,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/execution-models'
     | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
@@ -374,6 +387,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsConceptsChatModelRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/concepts/execution-models': {
+      id: '/docs/concepts/execution-models'
+      path: '/concepts/execution-models'
+      fullPath: '/docs/concepts/execution-models'
+      preLoaderRoute: typeof DocsConceptsExecutionModelsRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/docs/concepts/memory': {
       id: '/docs/concepts/memory'
       path: '/concepts/memory'
@@ -450,6 +470,7 @@ interface DocsRouteChildren {
   DocsConceptsAgentRoute: typeof DocsConceptsAgentRoute
   DocsConceptsCallbackHandlerRoute: typeof DocsConceptsCallbackHandlerRoute
   DocsConceptsChatModelRoute: typeof DocsConceptsChatModelRoute
+  DocsConceptsExecutionModelsRoute: typeof DocsConceptsExecutionModelsRoute
   DocsConceptsMemoryRoute: typeof DocsConceptsMemoryRoute
   DocsConceptsOutputParserRoute: typeof DocsConceptsOutputParserRoute
   DocsConceptsPromptTemplateRoute: typeof DocsConceptsPromptTemplateRoute
@@ -471,6 +492,7 @@ const DocsRouteChildren: DocsRouteChildren = {
   DocsConceptsAgentRoute: DocsConceptsAgentRoute,
   DocsConceptsCallbackHandlerRoute: DocsConceptsCallbackHandlerRoute,
   DocsConceptsChatModelRoute: DocsConceptsChatModelRoute,
+  DocsConceptsExecutionModelsRoute: DocsConceptsExecutionModelsRoute,
   DocsConceptsMemoryRoute: DocsConceptsMemoryRoute,
   DocsConceptsOutputParserRoute: DocsConceptsOutputParserRoute,
   DocsConceptsPromptTemplateRoute: DocsConceptsPromptTemplateRoute,
