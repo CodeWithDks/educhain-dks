@@ -37,6 +37,7 @@ const NAV: NavSection[] = [
       { title: "Agent", href: "/docs/concepts/agent" },
       { title: "Callback Handler", href: "/docs/concepts/callback-handler" },
       { title: "Memory", href: "/docs/concepts/memory" },
+      { title: "Execution Models", href: "/docs/concepts/execution-models" },
     ],
   },
   { title: "Examples & Demos", href: "/docs/examples" },
