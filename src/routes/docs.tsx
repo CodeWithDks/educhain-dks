@@ -139,6 +139,12 @@ function DocsLayout() {
               Docs
             </Link>
             <Link
+              to="/features"
+              className="hidden transition-colors hover:text-foreground sm:inline"
+            >
+              Features
+            </Link>
+            <Link
               to="/docs/examples"
               className="hidden transition-colors hover:text-foreground sm:inline"
             >
