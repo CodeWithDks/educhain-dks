@@ -74,7 +74,7 @@ const featureCards = [
     icon: Zap,
     title: "Execution Models",
     description: "Streaming, Async Execution, and the Callback System.",
-    href: "/docs/concepts/execution-models",
+    href: "/docs/concepts/chat-model",
   },
   {
     icon: Bot,
