@@ -19,6 +19,12 @@ export function SiteNavbar() {
           Docs
         </Link>
         <Link
+          to="/features"
+          className="transition-colors hover:text-foreground"
+        >
+          Features
+        </Link>
+        <Link
           to="/docs/examples"
           className="transition-colors hover:text-foreground"
         >
