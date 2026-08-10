@@ -21,6 +21,7 @@ import { Route as DocsRoadmapRouteImport } from './routes/docs.roadmap'
 import { Route as DocsConceptsAgentRouteImport } from './routes/docs.concepts.agent'
 import { Route as DocsConceptsCallbackHandlerRouteImport } from './routes/docs.concepts.callback-handler'
 import { Route as DocsConceptsChatModelRouteImport } from './routes/docs.concepts.chat-model'
+import { Route as DocsConceptsMemoryRouteImport } from './routes/docs.concepts.memory'
 import { Route as DocsConceptsOutputParserRouteImport } from './routes/docs.concepts.output-parser'
 import { Route as DocsConceptsPromptTemplateRouteImport } from './routes/docs.concepts.prompt-template'
 import { Route as DocsConceptsRagChainRouteImport } from './routes/docs.concepts.rag-chain'
@@ -91,6 +92,11 @@ const DocsConceptsChatModelRoute = DocsConceptsChatModelRouteImport.update({
   path: '/concepts/chat-model',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsConceptsMemoryRoute = DocsConceptsMemoryRouteImport.update({
+  id: '/concepts/memory',
+  path: '/concepts/memory',
+  getParentRoute: () => DocsRoute,
+} as any)
 const DocsConceptsOutputParserRoute =
   DocsConceptsOutputParserRouteImport.update({
     id: '/concepts/output-parser',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
   '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
   '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/docs/concepts/agent': typeof DocsConceptsAgentRoute
   '/docs/concepts/callback-handler': typeof DocsConceptsCallbackHandlerRoute
   '/docs/concepts/chat-model': typeof DocsConceptsChatModelRoute
+  '/docs/concepts/memory': typeof DocsConceptsMemoryRoute
   '/docs/concepts/output-parser': typeof DocsConceptsOutputParserRoute
   '/docs/concepts/prompt-template': typeof DocsConceptsPromptTemplateRoute
   '/docs/concepts/rag-chain': typeof DocsConceptsRagChainRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
     | '/docs/concepts/rag-chain'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
     | '/docs/concepts/rag-chain'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/docs/concepts/agent'
     | '/docs/concepts/callback-handler'
     | '/docs/concepts/chat-model'
+    | '/docs/concepts/memory'
     | '/docs/concepts/output-parser'
     | '/docs/concepts/prompt-template'
     | '/docs/concepts/rag-chain'
@@ -362,6 +374,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsConceptsChatModelRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/concepts/memory': {
+      id: '/docs/concepts/memory'
+      path: '/concepts/memory'
+      fullPath: '/docs/concepts/memory'
+      preLoaderRoute: typeof DocsConceptsMemoryRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/docs/concepts/output-parser': {
       id: '/docs/concepts/output-parser'
       path: '/concepts/output-parser'
@@ -431,6 +450,7 @@ interface DocsRouteChildren {
   DocsConceptsAgentRoute: typeof DocsConceptsAgentRoute
   DocsConceptsCallbackHandlerRoute: typeof DocsConceptsCallbackHandlerRoute
   DocsConceptsChatModelRoute: typeof DocsConceptsChatModelRoute
+  DocsConceptsMemoryRoute: typeof DocsConceptsMemoryRoute
   DocsConceptsOutputParserRoute: typeof DocsConceptsOutputParserRoute
   DocsConceptsPromptTemplateRoute: typeof DocsConceptsPromptTemplateRoute
   DocsConceptsRagChainRoute: typeof DocsConceptsRagChainRoute
@@ -451,6 +471,7 @@ const DocsRouteChildren: DocsRouteChildren = {
   DocsConceptsAgentRoute: DocsConceptsAgentRoute,
   DocsConceptsCallbackHandlerRoute: DocsConceptsCallbackHandlerRoute,
   DocsConceptsChatModelRoute: DocsConceptsChatModelRoute,
+  DocsConceptsMemoryRoute: DocsConceptsMemoryRoute,
   DocsConceptsOutputParserRoute: DocsConceptsOutputParserRoute,
   DocsConceptsPromptTemplateRoute: DocsConceptsPromptTemplateRoute,
   DocsConceptsRagChainRoute: DocsConceptsRagChainRoute,
@@ -471,13 +492,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

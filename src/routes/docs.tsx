@@ -36,6 +36,7 @@ const NAV: NavSection[] = [
       { title: "RAG Chain", href: "/docs/concepts/rag-chain" },
       { title: "Agent", href: "/docs/concepts/agent" },
       { title: "Callback Handler", href: "/docs/concepts/callback-handler" },
+      { title: "Memory", href: "/docs/concepts/memory" },
     ],
   },
   { title: "Examples & Demos", href: "/docs/examples" },
