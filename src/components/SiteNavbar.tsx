@@ -64,6 +64,13 @@ export function SiteNavbar() {
             Docs
           </Link>
           <Link
+            to="/features"
+            onClick={() => setMenuOpen(false)}
+            className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
+          >
+            Features
+          </Link>
+          <Link
             to="/docs/examples"
             onClick={() => setMenuOpen(false)}
             className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
