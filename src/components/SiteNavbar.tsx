@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Github, Menu, Terminal, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function SiteNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,9 +45,18 @@ export function SiteNavbar() {
         >
           About
         </Link>
+        <ThemeToggle />
+        <Link
+          to="/docs/installation"
+          className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-emerald-glow"
+        >
+          Get Started
+        </Link>
       </div>
 
-      <button
+      <div className="flex items-center gap-2 sm:hidden">
+        <ThemeToggle />
+        <button
         type="button"
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -55,7 +65,8 @@ export function SiteNavbar() {
         className="inline-flex items-center justify-center rounded-md border border-border bg-secondary p-3 text-foreground transition-colors hover:bg-accent sm:hidden min-h-11 min-w-11"
       >
         {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
+        </button>
+      </div>
 
       {menuOpen && (
         <div
@@ -98,6 +109,13 @@ export function SiteNavbar() {
             className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
           >
             About
+          </Link>
+          <Link
+            to="/docs/installation"
+            onClick={() => setMenuOpen(false)}
+            className="border-t border-border px-4 py-3 font-semibold text-primary transition-colors hover:bg-accent"
+          >
+            Get Started
           </Link>
         </div>
       )}
