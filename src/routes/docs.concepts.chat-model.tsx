@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ConceptPage, conceptHead } from "@/components/ConceptPage";
 import { ProviderCodeTabs } from "@/components/ProviderCodeTabs";
+import { CodeBlock } from "@/components/CodeBlock";
 import { providerTabs } from "@/lib/provider-tabs";
 
 export const Route = createFileRoute("/docs/concepts/chat-model")({
