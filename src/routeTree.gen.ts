@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as DocsIndexRouteImport } from './routes/docs.index'
@@ -34,6 +35,11 @@ import { Route as DocsConceptsVectorStoreRouteImport } from './routes/docs.conce
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRoute = DocsRouteImport.update({
@@ -144,6 +150,7 @@ const DocsConceptsVectorStoreRoute = DocsConceptsVectorStoreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/docs': typeof DocsRouteWithChildren
   '/features': typeof FeaturesRoute
   '/docs/architecture': typeof DocsArchitectureRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
   '/docs/architecture': typeof DocsArchitectureRoute
   '/docs/examples': typeof DocsExamplesRoute
@@ -190,6 +198,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/docs': typeof DocsRouteWithChildren
   '/features': typeof FeaturesRoute
   '/docs/architecture': typeof DocsArchitectureRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/docs'
     | '/features'
     | '/docs/architecture'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/features'
     | '/docs/architecture'
     | '/docs/examples'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/docs'
     | '/features'
     | '/docs/architecture'
@@ -284,6 +296,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   DocsRoute: typeof DocsRouteWithChildren
   FeaturesRoute: typeof FeaturesRoute
 }
@@ -295,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -486,9 +506,20 @@ const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   DocsRoute: DocsRouteWithChildren,
   FeaturesRoute: FeaturesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
