@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { Github, Menu, Terminal, X } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/docs")({
   component: DocsLayout,
@@ -165,6 +166,7 @@ function DocsLayout() {
             >
               About
             </Link>
+            <ThemeToggle />
             <Link
               to="/docs/installation"
               className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-emerald-glow"

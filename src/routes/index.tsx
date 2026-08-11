@@ -57,7 +57,7 @@ function Index() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Link
-            to="/docs"
+            to="/docs/installation"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-emerald/25 transition-all hover:bg-emerald-glow hover:shadow-emerald/40"
           >
             Get Started
