@@ -160,6 +160,12 @@ function DocsLayout() {
               GitHub
             </a>
             <Link
+              to="/about"
+              className="hidden transition-colors hover:text-foreground sm:inline"
+            >
+              About
+            </Link>
+            <Link
               to="/docs/installation"
               className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-emerald-glow"
             >
