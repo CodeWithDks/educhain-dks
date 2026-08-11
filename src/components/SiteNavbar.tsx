@@ -92,6 +92,13 @@ export function SiteNavbar() {
           >
             GitHub
           </a>
+          <Link
+            to="/about"
+            onClick={() => setMenuOpen(false)}
+            className="border-t border-border px-4 py-3 transition-colors hover:bg-accent hover:text-foreground"
+          >
+            About
+          </Link>
         </div>
       )}
     </nav>
