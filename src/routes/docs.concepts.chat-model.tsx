@@ -47,5 +47,6 @@ for chunk in model.stream("Explain AI in simple words."):
 response = await model.ainvoke("Explain AI in simple words.")`}
         />
       </section>
+    </ConceptPage>
   );
 }
