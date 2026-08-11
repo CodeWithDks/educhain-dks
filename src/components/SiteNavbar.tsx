@@ -38,6 +38,12 @@ export function SiteNavbar() {
         >
           GitHub
         </a>
+        <Link
+          to="/about"
+          className="transition-colors hover:text-foreground"
+        >
+          About
+        </Link>
       </div>
 
       <button
