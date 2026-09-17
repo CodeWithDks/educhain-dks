@@ -1,38 +1,20 @@
-# EduChain Website
+# EduChain — Landing Page
 
-Build a developer-tool website homepage for an open-source Python framework
+The marketing/landing page for [**EduChain**](https://github.com/CodeWithDks/EduChain) — an educational Python framework, inspired by LangChain, built from scratch to understand how modern LLM frameworks work internally.
 
-called EduChain. Dark theme by default, one emerald-green accent color,
+This site is a companion to the actual project, not the project itself. For the real framework — source code, docs, and the published package — see [github.com/CodeWithDks/EduChain](https://github.com/CodeWithDks/EduChain) and [pypi.org/project/educhain-dks](https://pypi.org/project/educhain-dks/).
 
-clean sans-serif body font, monospace font for code blocks. Just build the
+**Live site:** https://educhain-dks.lovable.app
 
-homepage hero section for now — headline "EduChain", subheadline "An
-
-educational Python framework inspired by LangChain — built from scratch to
-
-understand how modern LLM frameworks work internally", with two buttons
-
-"Get Started" and "View on GitHub: https://github.com/CodeWithDks/EduChain
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://educhain-dks.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/fb614be4-84a4-43ef-aba1-e04ca81670aa).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Built with [Lovable](https://lovable.dev) — changes made in the Lovable editor sync directly to this repository.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requires Node.js and npm ([install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)):
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
+git clone https://github.com/CodeWithDks/educhain-dks.git
+cd educhain-dks
 npm i
 npm run dev
 ```
